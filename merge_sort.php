@@ -7,4 +7,20 @@ function mergeSort($array) {
     if ($arrLength < 2)
         return $array;
 
+        
+    // spliting the array in half
+    $left = [];
+    $mid = floor($arrLength / 2);
+    $right = [];
+
+    // looping to copy left half of array
+    for ($i = 0; $i < $mid; $i++) {
+        $left[] = $array[$i];
+    }
+
+    // looping to copy right half of array
+    for ($i = $mid; $i < $arrLength; $i++) {
+        $right[] = $array[$i];
+    }
+
 }
