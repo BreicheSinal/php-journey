@@ -34,7 +34,7 @@ function isPalindrome($word){
 if (isset($_GET['inputWord'])) {
     $inputWord = $_GET['inputWord'];
 
-    isPalindrome($inputWord);
+    isPalindrome(strtolower($inputWord));
 } else {
     echo json_encode([
         "error" => "PLEASE ENTER A WORD! :O"
