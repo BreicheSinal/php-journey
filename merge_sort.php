@@ -1,5 +1,7 @@
 <?php
 
+header('Content-Type: application/json');
+
 function mergeSort($array) {
     $arrLength = count( $array );
 
@@ -60,4 +62,29 @@ function mergeSort($array) {
 
     return $result;
 
+}
+
+if (isset($_GET['inputArray'])) {
+    $array = json_decode($_GET['inputArray'], true);
+
+    if (is_array($array)) {
+        // Perform the merge sort
+        $sortedArray = mergeSort($array);
+
+        // Return sorted array as JSON
+        echo json_encode([
+            "status" => "SORTED SUCCESSFULLY!",
+            "sortedArray" => $sortedArray
+        ]);
+    } else {
+        echo json_encode([
+            "status" => "Error",
+            "message" => "NOT AN ARRAY!"
+        ]);
+    }
+} else {
+    echo json_encode([
+        "status" => "error",
+        "message" => "PLEASE ENTER A ARRAY! :O"
+    ]);
 }
