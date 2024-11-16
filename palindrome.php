@@ -14,5 +14,19 @@ function isPalindrome($word){
         $reversedWord .= $word[$i];
     }
 
+     // comparing the word with its reversed
+     for ($y = 0; $y < $wordLength; $y++){
+        if($word[$y] !== $reversedWord[$y]){
+            echo json_encode([
+                    "input" => $word,
+                    "message" => "WORD IS NOT A PALINDROME :("
+                ]);
+            return;
+        }
+    }
+    echo json_encode([
+        "input" => $word,
+        "message" => "WORD IS A PALINDROME :)"
+    ]);
 }
 
