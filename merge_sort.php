@@ -27,4 +27,37 @@ function mergeSort($array) {
         $left = mergeSort($left);
         $right = mergeSort($right);
     
+        // merging/sorting arrays
+    $leftLength = count($left);
+    $rightLength = count($right);
+
+    $result = [];
+    $leftPtr = 0;
+    $rightPtr = 0;
+
+    // comparing/merging both arrays
+    while ($leftPtr < $leftLength && $rightPtr < $rightLength) {
+        if ($left[$leftPtr] <= $right[$rightPtr]) {
+            $result[] = $left[$leftPtr];
+            $leftPtr++;
+        } else {
+            $result[] = $right[$rightPtr];
+            $rightPtr++;
+        }
+    }
+
+    // appending left array
+    while ($leftPtr < $leftLength) {
+        $result[] = $left[$leftPtr];
+        $leftPtr++;
+    }
+
+    // appending right array
+    while ($rightPtr < $rightLength) {
+        $result[] = $right[$rightPtr];
+        $rightPtr++;
+    }
+
+    return $result;
+
 }
