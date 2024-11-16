@@ -1,5 +1,7 @@
 <?php
 
+header('Content-Type: application/json');
+
 function isPalindrome($word){
     $word = trim($word); // trimming to avoid spaces && newline
     $wordLength = 0;
