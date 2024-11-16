@@ -23,4 +23,8 @@ function mergeSort($array) {
         $right[] = $array[$i];
     }
 
+        // sorting arrays recursively
+        $left = mergeSort($left);
+        $right = mergeSort($right);
+    
 }
