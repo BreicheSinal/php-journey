@@ -1,6 +1,7 @@
 <?php
 
 function isPalindrome($word){
+    $word = trim($word); // trimming to avoid spaces && newline
     $wordLength = 0;
     $reversedWord='';
 
