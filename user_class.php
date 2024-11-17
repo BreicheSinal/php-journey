@@ -17,8 +17,15 @@ class User{
     public static function passwordValidation($password) {
         $regex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{12,}$/';
         $result = preg_match($regex, $password);
-        return $result ? true : false;
-            
+        return $result ? true : false;    
     }
 
+    // static function to validate email
+    public static function emailValidation($email) {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return false;
+        }
+        return true;
+    }
+    
 }
