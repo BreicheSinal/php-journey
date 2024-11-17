@@ -15,17 +15,26 @@ class User{
 
     // static function to validate pass(12char, 1upper/lower, 1specialChar)
     public static function passwordValidation($password) {
-        $regex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{12,}$/';
-        $result = preg_match($regex, $password);
-        return $result ? true : false;    
+        if ($password === null) {
+            return 'PASSWORD CANNOT BE EMPTY MATE :(';
+        }else{
+            $regex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{12,}$/';
+            $result = preg_match($regex, $password);
+            return $result ? true : 'CHECK PATTERN FOR ACCEPTED PASSWORD MATE!';    
+        }
     }
 
     // static function to validate email
     public static function emailValidation($email) {
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return false;
+        if ($email === null) {
+            return 'EMAIL CANNOT BE EMPTY MATE :(';
+        }else{
+
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                return 'INVALID EMAIL FORMAT MATE!';
+            }
+            return true;
         }
-        return true;
     }
 
     // method retruning a new user instance with update values
