@@ -27,5 +27,26 @@ class User{
         }
         return true;
     }
+
+    // method retruning a new user instance with update values
+    public function copy_with($name = null, $email = null, $password = null) {
+        // validating email
+        if (!User::emailValidation($email)) {
+            $email = $this->email;
+        }
+    
+        // validating password
+        if (!User::passwordValidation($password)) {
+            $password = $this->password;
+        }
+    
+        // returning a user insatnce 
+        return new User(
+            $name ?? $this->name,
+            $email ?? $this->email,
+            $password ?? $this->password
+        );
+    }
+    
     
 }
