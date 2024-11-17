@@ -73,3 +73,23 @@ class WordLinkedList {
     }
 
 }
+
+// creating a linked list instance
+$wordList = new WordLinkedList();
+
+if (isset($_GET['inputWord'])) {
+    $inputWord = trim($_GET['inputWord']); // Get the word from the GET request
+    
+    // Append the word to the linked list
+    $wordList->appendWord($inputWord);
+
+    $wordsWithTwoVowels = $wordList->getWordsWithTwoVowels();
+    echo json_encode([
+        "input" => $inputWord,
+        "wordsWithTwoVowels" => $wordsWithTwoVowels
+    ]);
+} else {
+    echo json_encode([
+        "error" => "PLEASE ENTER A WORD :("
+    ]);
+}
