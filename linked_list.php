@@ -36,4 +36,40 @@ class WordLinkedList {
             $currentNode->nextNode = $newNode;
         }
     }
+
+    // retrieving all words with 2 vowels
+    public function getWordsWithTwoVowels() {
+        $currentNode = $this->firstNode;
+        $matchingWords = [];
+        $vowelCharacters = 'aeiouAEIOU';
+
+        // checking word
+        while ($currentNode !== null) {
+            $word = $currentNode->data;
+            $vowelCount = 0;
+            $charIndex = 0;
+
+            // counting the vowels in the word
+            while (isset($word[$charIndex])) {
+                $currentChar = $word[$charIndex];
+                for ($vowelIndex = 0; isset($vowelCharacters[$vowelIndex]); $vowelIndex++) {
+                    if ($vowelCharacters[$vowelIndex] === $currentChar) {
+                        $vowelCount++;
+                        break; // if match break
+                    }
+                }
+                $charIndex++;
+            }
+
+            // checking for exaclty 2 vowels in a word
+            if ($vowelCount === 2) {
+                $matchingWords[] = $word;
+            }
+
+            $currentNode = $currentNode->nextNode;
+        }
+
+        return $matchingWords;
+    }
+
 }
